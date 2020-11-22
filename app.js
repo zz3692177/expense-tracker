@@ -4,6 +4,21 @@ const app = express()
 const mongoose = require('mongoose')
 mongoose.connect('mongodb://localhost/expensive', { useNewUrlParser: true, useUnifiedTopology: true })
 
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main', extname: '.handlebars' }))
+app.set('view engine', 'handlebars')
+
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+  res.render('index')
+})
+
+app.get('/record/new', (req, res) => {
+  res.render('new')
+})
+
 // 取得資料庫連線狀態
 const db = mongoose.connection
 // 連線異常
@@ -24,3 +39,4 @@ app.get('/', (req, res) => {
 app.listen(3000, () => {
   console.log('App is running on http://localhost:3000')
 })
+

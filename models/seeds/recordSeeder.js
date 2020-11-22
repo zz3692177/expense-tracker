@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const Expensive = require('../expensive') // 載入 todo model
+const Expensive = require('../record') // 載入 todo model
 mongoose.connect('mongodb://localhost/expensive', { useNewUrlParser: true, useUnifiedTopology: true })
 const db = mongoose.connection
 db.on('error', () => {

@@ -1,0 +1,75 @@
+<div class="d-flex flex-column bd-highlight flex-wrap mt-6 container center">
+  <div class="row justify-content-around">
+    <div class="col">
+      <div class="dropdown">
+        <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          支出類別
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#"><i class="fas fa-home">家居物業</i></a>
+          <a class="dropdown-item" href="#"><i class="fas fa-shuttle-van">交通出行</i></a>
+          <a class="dropdown-item" href="#"><i class="fas fa-grin-beam">休閒娛樂</i></a>
+          <a class="dropdown-item" href="#"><i class="fas fa-utensils">餐飲食品</i></a>
+          <a class="dropdown-item" href="#"><i class="fas fa-pen">其他</i></a>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <sapn class="total-amount" id="total-amount">
+        總金額
+      </sapn>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <div class="mb-5 container">
+        <div class="record-list">
+
+          <div class="no-record">
+            <h4>{{selectMonth}} {{selectCategory}} 沒有紀錄
+            </h4>
+          </div>
+
+
+          {{#each record}}
+          <li class="list-group-item" data-id="{{@index}}">
+            <a href="/record/{{this._id}}">
+
+              <div class="list-top">
+                <p class="category-icon">{{{this.icon}}}</p>
+                <p class="ml-2 list-name">{{this.name}}</p>
+              </div>
+
+              <div class="list-bottom">
+                <div class="ml-2 list-date">{{this.date}} / {{this.merchant}}</div>
+                <div class="mr-2 list-amount"> {{this.amount}}</div>
+              </div>
+
+            </a>
+            <form action="/record/{{this._id}}?_method=DELETE" method="POST" onsubmit="return confirm('確定要刪除嗎？')">
+              <button type="submit" class="delete-btn">
+                <i class="fas fa-backspace"></i>
+              </button>
+            </form>
+          </li>
+          {{/each}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+  <a type="button" class="btn btn-primary" href="./record/new" role="button">新增支出</a>
+
+
+
+</div>

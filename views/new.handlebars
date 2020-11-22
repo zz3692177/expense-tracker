@@ -1,0 +1,60 @@
+<h1 class="restaurant-show-title center">＊代表必填 請輸出你的支出</h1>
+<form action="/restaurants" method="POST" id="create">
+  <div class="container">
+    <div class="row">
+      <div class="col-10 col-md-8 mx-auto">
+        <p class="mb-1">
+          <span>
+            名稱＊：
+          </span>
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="名稱" name="name" required>
+        </div>
+        </p>
+
+        <p class="mb-1">
+          <label for="category">
+            <i class="fas fa-filter pr-1"></i>類別＊：
+          </label>
+        <div class="input-group">
+          <select id="category" class="custom-select" name="category">
+            <option selected>請選擇支出類型</option>
+            <option>家居物業</option>
+            <option>交通出行</option>
+            <option>休閒娛樂</option>
+            <option>餐飲食品</option>
+            <option>其他</option>
+          </select>
+        </div>
+        </p>
+
+        <p class="mb-1">
+          <span>
+            <i class="fas fa-calendar-alt"></i>日期＊：
+          </span>
+        <div class="input-group">
+          <input type="date" class="form-control" id="date" required />
+        </div>
+        </p>
+
+        <p class="mb-1">
+          <span>
+            <i class="fas fa-dollar-sign"></i>金額＊：
+          </span>
+        <div class="input-group">
+          <input type="number" class="form-control" id="amount" required />
+        </div>
+        </p>
+
+
+        <div class="text-center mb-4">
+          <button type="submit" class="btn btn-outline-success btn-sm">新增</button>
+          <a href="/">
+            <button class="btn btn-outline-warning btn-sm ml-2 " type="button">返回清單</button>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</form>
