@@ -1,5 +1,6 @@
-<h1 class="restaurant-show-title center">＊代表必填 請輸出你的支出</h1>
-<form action="/record" method="POST" id="create">
+<h1 class="restaurant-show-title center">修改支出</h1>
+
+<form action="/record/{{record._id}}" method="POST" id="create">
   <div class="container">
     <div class="row">
       <div class="col-10 col-md-8 mx-auto">
@@ -8,7 +9,7 @@
             名稱＊：
           </span>
         <div class="input-group">
-          <input type="text" class="form-control" placeholder="名稱" name="title" required>
+          <input type="text" class="form-control" placeholder="名稱" name="title" value="{{record.title}}" required>
         </div>
         </p>
 
@@ -18,7 +19,7 @@
           </label>
         <div class="input-group">
           <select id="category" class="custom-select" name="category">
-            <option selected>請選擇支出類型</option>
+            <option selected>{{record.category}}</option>
             <option>家居物業</option>
             <option>交通出行</option>
             <option>休閒娛樂</option>
@@ -33,7 +34,7 @@
             <i class="fas fa-calendar-alt"></i>日期＊：
           </span>
         <div class="input-group">
-          <input type="date" class="form-control" id="date" name="date" required />
+          <input type="date" class="form-control" id="date" name="date" value="{{record.date}}" required />
         </div>
         </p>
 
@@ -42,13 +43,13 @@
             <i class="fas fa-dollar-sign"></i>金額＊：
           </span>
         <div class="input-group">
-          <input type="number" class="form-control" id="amount" name="amount" required />
+          <input type="number" class="form-control" id="amount" name="amount" value="{{record.amount}}" required />
         </div>
         </p>
 
 
         <div class="text-center mb-4">
-          <button type="submit" class="btn btn-outline-success btn-sm">新增</button>
+          <button type="submit" class="btn btn-outline-success btn-sm">更新</button>
           <a href="/">
             <button class="btn btn-outline-warning btn-sm ml-2 " type="button">返回清單</button>
           </a>
