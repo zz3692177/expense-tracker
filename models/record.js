@@ -6,12 +6,16 @@ const recordSchema = new Schema({
     required: true // 這是個必填欄位
   },
   date: {
-    type: Date,
+    type: String,
     required: true
   },
   category: {
     type: String,
     required: true
+  },
+  icon: {
+    type: String,
+    require: true
   },
   amount: {
     type: Number,
