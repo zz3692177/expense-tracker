@@ -22,17 +22,50 @@ const icon = {
   "家居物業": "<i class=\"fas fa-home\"></i>", "交通出行": "<i class=\"fas fa-shuttle-van\"></i>", "休閒娛樂": "<i class=\"fas fa-grin-beam\"></i>",
   "餐飲食品": "<i class=\"fas fa-utensils\"></i>", "其他": "<i class=\"fas fa-pen\"></i>"
 }
+const categoryChart = {
+  "residentialProperty": "家居物業", "traffic": "交通出行", "amusement": "休閒娛樂", "food": "餐飲食品", "other": "其他"
+}
 
 
 
 app.get('/', (req, res) => {
-  console.log(Record.find())
+  let sum = 0
   Record.find()
     .lean()
     .then(records => {
-      res.render('index', { records, icon })
+      for (let i = 0; i < records.length; i++) {
+        sum += records[i].amount
+      }
+      res.render('index', { records, icon, sum })
+      sum = 0;
       // console.log(icon)
     })
+
+})
+
+app.get('/sorts', (req, res) => {
+  let categorySelect = {
+    residentialProperty: false,
+    traffic: false,
+    amusement: false,
+    food: false,
+    other: false
+  }
+
+  let sum = 0
+  const { type } = req.query
+  const categoryFind = categoryChart[type]
+  categorySelect[type] = true
+
+  console.log(categorySelect[type])
+
+  return Record.find({ category: categoryFind })
+    .lean()
+    .then(records => {
+      records.forEach(record => sum += record.amount)
+      res.render('index', { records, sum, categorySelect })
+    })
+    .catch(error => console.log(error))
 
 })
 

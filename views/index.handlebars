@@ -7,17 +7,17 @@
           支出類別
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#"><i class="fas fa-home">家居物業</i></a>
-          <a class="dropdown-item" href="#"><i class="fas fa-shuttle-van">交通出行</i></a>
-          <a class="dropdown-item" href="#"><i class="fas fa-grin-beam">休閒娛樂</i></a>
-          <a class="dropdown-item" href="#"><i class="fas fa-utensils">餐飲食品</i></a>
-          <a class="dropdown-item" href="#"><i class="fas fa-pen">其他</i></a>
+          <a class="dropdown-item" href="/sorts?type=residentialProperty"><i class="fas fa-home">家居物業</i></a>
+          <a class="dropdown-item" href="/sorts?type=traffic"><i class="fas fa-shuttle-van">交通出行</i></a>
+          <a class="dropdown-item" href="/sorts?type=amusement"><i class="fas fa-grin-beam">休閒娛樂</i></a>
+          <a class="dropdown-item" href="/sorts?type=food"><i class="fas fa-utensils">餐飲食品</i></a>
+          <a class="dropdown-item" href="/sorts?type=other"><i class="fas fa-pen">其他</i></a>
         </div>
       </div>
     </div>
     <div class="col">
       <sapn class="total-amount" id="total-amount">
-        總金額
+        總金額 {{sum}}
       </sapn>
     </div>
   </div>
@@ -25,25 +25,22 @@
   {{!-- <div class="row">
     <div class="col"> --}}
   <div class="container">
-    <div class="list-group list-group-horizontal-sm">
+    <div class="list-group list-group-horizontal-sm list-group-flush">
 
       {{#each records}}
       <li class=" list-group-item" data-id=" {{@index}}">
-        <div class="d-flex flex-row bd-highlight mb-3">
-          <div class="p-1 bd-highlight">
+        <div class="d-flex flex-row  justify-content-center bd-highlight mb-3">
+          <div class="p-3 bd-highlight">
             <span class="category-icon">{{{this.icon}}}</span>
           </div>
-          <div class="p-1 bd-highlight">
-            <a href="/record/{{this._id}}">
-              <p class="list-name">{{this.title}}</p>
-              <p class="list-date">{{this.date}}</p>
-
-            </a>
+          <div class="d-flex flex-column p-1 bd-highlight">
+            <span class="list-name">{{this.title}}</span>
+            <span class="list-date">{{this.date}}</span>
           </div>
-          <div class="p-1 bd-highlight">
-            <p class="list-amount"> {{this.amount}}</p>
+          <div class="p-3 bd-highlight">
+            <span class="list-amount"> {{this.amount}}</span>
           </div>
-          <div class="d-flex flex-row p-1 bd-highlight">
+          <div class="d-flex flex-row p-3 bd-highlight">
             <div class="bd-highlight">
               <a role="button" class="btn btn-outline-secondary btn-sm" href="./record/{{ this._id }}/edit"><i
                   class="fas fa-edit"></i></a>
