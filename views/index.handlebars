@@ -7,17 +7,17 @@
           支出類別
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="/sorts?type=residentialProperty"><i class="fas fa-home">家居物業</i></a>
-          <a class="dropdown-item" href="/sorts?type=traffic"><i class="fas fa-shuttle-van">交通出行</i></a>
-          <a class="dropdown-item" href="/sorts?type=amusement"><i class="fas fa-grin-beam">休閒娛樂</i></a>
-          <a class="dropdown-item" href="/sorts?type=food"><i class="fas fa-utensils">餐飲食品</i></a>
-          <a class="dropdown-item" href="/sorts?type=other"><i class="fas fa-pen">其他</i></a>
+          <a class="dropdown-item" href="/filter?type=residentialProperty"><i class="fas fa-home">家居物業</i></a>
+          <a class="dropdown-item" href="/filter?type=traffic"><i class="fas fa-shuttle-van">交通出行</i></a>
+          <a class="dropdown-item" href="/filter?type=amusement"><i class="fas fa-grin-beam">休閒娛樂</i></a>
+          <a class="dropdown-item" href="/filter?type=food"><i class="fas fa-utensils">餐飲食品</i></a>
+          <a class="dropdown-item" href="/filter?type=other"><i class="fas fa-pen">其他</i></a>
         </div>
       </div>
     </div>
     <div class="col">
       <sapn class="total-amount" id="total-amount">
-        總金額 {{sum}}
+        總金額 {{ totalAmount }}
       </sapn>
     </div>
   </div>
@@ -46,7 +46,7 @@
                   class="fas fa-edit"></i></a>
             </div>
             <div class="bd-highlight">
-              <form action="/record/{{this._id}}/delete" method="POST" onsubmit="return confirm('確定要刪除嗎？')">
+              <form action="/record/{{this._id}}/?_method=DELETE" method="POST" onsubmit="return confirm('確定要刪除嗎？')">
                 <button type="submit" class="btn btn-outline-danger btn-sm">
                   <i class="fas fa-trash"></i>
                 </button>
